@@ -4,7 +4,7 @@ pytgcalls
 ffmpeg-python
 Pyrogram
 TgCrypto
-youtube_dl
+youtube-dl
 youtube_search
 aiohttp
 aiofiles
