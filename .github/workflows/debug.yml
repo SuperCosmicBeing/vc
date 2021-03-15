@@ -31,6 +31,7 @@ jobs:
         run: |
           git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.repo }} source
           cd source
+          sudo apt update
           sudo apt install ffmpeg pulseaudio mpv libmpv-dev pavucontrol screen -y
           sudo python3 -m pip install -U pip
           sudo pip3 install -r requirements.txt
