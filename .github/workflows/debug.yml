@@ -29,8 +29,7 @@ jobs:
           git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.repo }} source
           cd source
           sudo apt update
-          sudo apt install ffmpeg opus-tools bpm-tools -y
-          sudo apt upgrade -y
+          sudo apt-get install ffmpeg opus-tools bpm-tools -y
           sudo python3 -m pip install -U pip
           sudo pip3 install setuptools wheel
           sudo pip3 install -U -r requirements.txt
