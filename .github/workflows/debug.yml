@@ -28,19 +28,15 @@ jobs:
         run: |
           git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.repo }} source
           cd source
-          sudo apt update
-          sudo apt-get install ffmpeg opus-tools bpm-tools -y
-          sudo python3 -m pip install -U pip
-          sudo pip3 install setuptools wheel
-          sudo pip3 install -U -r requirements.txt
-          sudo pip3 install -U youtube-dl
+          docker container prune --force || true
+          docker build . --rm --force-rm --compress --no-cache=true --pull --file Dockerfile -t vcbot
 
       - name: running VC bot
         timeout-minutes: 340
         continue-on-error: true
         run: |
           cd source
-          python3 main.py
+          docker run --privileged --rm -i vcbot
 
       - name: Loop Workflow
         continue-on-error: false
