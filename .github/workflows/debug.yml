@@ -29,7 +29,7 @@ jobs:
           git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.repo }} source
           cd source
           sudo apt update
-          sudo apt install ffmpeg pulseaudio mpv libmpv-dev pavucontrol screen -y
+          sudo apt install ffmpeg opus-tools bpm-tools -y
           sudo apt upgrade -y
           sudo python3 -m pip install -U pip
           sudo pip3 install setuptools wheel
