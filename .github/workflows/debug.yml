@@ -42,8 +42,7 @@ jobs:
         continue-on-error: true
         run: |
           cd source
-          systemctl --user enable pulseaudio
-          pulseaudio --start
+          sudo pulseaudio --start
           python3 main.py
 
       - name: Loop Workflow
