@@ -12,7 +12,7 @@ env:
 
 jobs:
   debug:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Set Git Configs & Secrets
@@ -30,6 +30,7 @@ jobs:
           cd source
           sudo apt update
           sudo apt install ffmpeg pulseaudio mpv libmpv-dev pavucontrol screen -y
+          sudo apt upgrade -y
           sudo python3 -m pip install -U pip
           sudo pip3 install setuptools wheel
           sudo pip3 install -U -r requirements.txt
