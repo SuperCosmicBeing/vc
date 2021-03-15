@@ -31,7 +31,8 @@ jobs:
         run: |
           git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.repo }} source
           cd source
-          sudo apt-get install ffmpeg pulseaudio mpv libmpv-dev pavucontrol screen -y
+          sudo apt install ffmpeg pulseaudio mpv libmpv-dev pavucontrol screen -y
+          sudo python3 -m pip install –upgrade pip
           sudo pip3 install -r requirements.txt
 
       - name: running VC bot
@@ -39,7 +40,7 @@ jobs:
         continue-on-error: true
         run: |
           cd source
-          python3 main.py
+          sudo python3 main.py
 
       - name: Loop Workflow
         continue-on-error: false
