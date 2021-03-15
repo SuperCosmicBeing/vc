@@ -34,6 +34,7 @@ jobs:
           sudo apt install ffmpeg pulseaudio mpv libmpv-dev pavucontrol screen -y
           sudo python3 -m pip install -U pip
           sudo pip3 install -r requirements.txt
+          sudo pip3 install youtube-dl
 
       - name: running VC bot
         timeout-minutes: 340
