@@ -34,7 +34,7 @@ jobs:
           sudo apt update
           sudo apt install ffmpeg pulseaudio mpv libmpv-dev pavucontrol screen -y
           sudo python3 -m pip install -U pip
-          sudo pip3 install -r requirements.txt
+          sudo pip3 install -U -r requirements.txt
           sudo pip3 install -U youtube-dl
 
       - name: running VC bot
@@ -42,6 +42,8 @@ jobs:
         continue-on-error: true
         run: |
           cd source
+          systemctl --user enable pulseaudio
+          pulseaudio --start
           python3 main.py
 
       - name: Loop Workflow
