@@ -42,7 +42,7 @@ jobs:
         continue-on-error: true
         run: |
           cd source
-          sudo pulseaudio --start
+          sudo pulseaudio --start --system
           python3 main.py
 
       - name: Loop Workflow
