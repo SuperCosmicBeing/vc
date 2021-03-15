@@ -15,9 +15,6 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
-
       - name: Set Git Configs & Secrets
         run: |
           sudo apt-get install -y git
@@ -42,7 +39,7 @@ jobs:
         continue-on-error: true
         run: |
           cd source
-          sudo pulseaudio --start --system
+          pulseaudio --start
           python3 main.py
 
       - name: Loop Workflow
