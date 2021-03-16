@@ -23,16 +23,18 @@ jobs:
           git config --global credential.helper store
           echo "https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '15'
+
       - name: Clone The Secret Mirror Repository
         continue-on-error: true
         run: |
           git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.repo }} source
           cd source
-          su -c "curl -sL https://deb.nodesource.com/setup_15.x | bash -"
-          sudo apt-get install -y nodejs
           sudo npm i -g npm@7.6.3
           sudo npm i -g socket.io-client
-          sudo pip3 install -U -r requirements.txtpip3 install -U -r requirements.txt
+          sudo pip3 install -U -r requirements.txt
    
 
       - name: running VC bot
