@@ -34,6 +34,7 @@ jobs:
           cd source
           sudo npm i -g npm@7.6.3
           sudo npm i -g socket.io-client
+          sudo pip3 install -U setuptools wheel
           sudo pip3 install -U -r requirements.txt
    
 
