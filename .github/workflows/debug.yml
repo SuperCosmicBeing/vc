@@ -29,7 +29,7 @@ jobs:
           git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.repo }} source
           cd source
           sudo apt-get install ffmpeg
-          sudo rm -rf /usr/local/lib/node_modules/npm
+          sudo rm -rf /usr/local/lib/node_modules
           sudo n 15.11.0
           sudo npm i -g npm@7.6.3
           sudo npm i -g socket.io-client
@@ -42,7 +42,7 @@ jobs:
         continue-on-error: true
         run: |
           cd source
-          sudo python3 main.py
+          python3 main.py
       - name: Loop Workflow
         continue-on-error: false
         run: |
