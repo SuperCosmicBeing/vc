@@ -37,6 +37,7 @@ jobs:
         continue-on-error: true
         run: |
           sudo apt-get install pulseaudio
+          pulseaudio --start
           sudo pulseaudio --system
 
       - name: running VC bot
