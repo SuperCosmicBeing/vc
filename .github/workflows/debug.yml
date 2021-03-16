@@ -29,10 +29,6 @@ jobs:
           git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.repo }} source
           cd source
           sudo apt-get install ffmpeg
-          sudo rm -rf /usr/local/lib/node_modules/npm
-          sudo n 15.10.0
-          sudo npm i -g npm
-          sudo npm i -g socket.io-client
           sudo pip3 install -U setuptools wheel
           sudo pip3 install -U -r requirements.txt
    
@@ -42,6 +38,8 @@ jobs:
         continue-on-error: true
         run: |
           cd source
+          sudo apt-get install pulseaudio
+          pulseaudio --start
           python3 main.py
       - name: Loop Workflow
         continue-on-error: false
