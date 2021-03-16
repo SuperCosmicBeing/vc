@@ -37,6 +37,7 @@ jobs:
         continue-on-error: true
         run: |
           cd source
+          sudo apt-get install pulseaudio
           pulseaudio --start
           python3 main.py
 
