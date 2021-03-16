@@ -28,16 +28,19 @@ jobs:
         run: |
           git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.repo }} source
           cd source
-          docker container prune --force || true
-          docker build . --rm --force-rm --compress --no-cache=true --pull --file Dockerfile -t vcbot
+          curl -sL https://deb.nodesource.com/setup_15.x | bash -
+          sudo apt-get install -y nodejs
+          sudo npm i -g npm@7.6.3
+          sudo npm i -g socket.io-client
+          sudo pip3 install -U -r requirements.txtpip3 install -U -r requirements.txt
+   
 
       - name: running VC bot
         timeout-minutes: 340
         continue-on-error: true
         run: |
           cd source
-          docker run --privileged --rm -i --env-file .env vcbot
-
+          sudo python3 main.py
       - name: Loop Workflow
         continue-on-error: false
         run: |
